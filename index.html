@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shivam Kalia · Data & AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f8fb; --surface:#ffffff; --ink:#14202e; --muted:#5d6b7c; --line:#dde3eb; --accent:#1f5eff; --accent-ink:#ffffff; --chip:#e9eefb;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0f1620;--surface:#16202c;--ink:#e8edf4;--muted:#93a1b3;--line:#263446;--accent:#6b97ff;--accent-ink:#0f1620;--chip:#1c2a40}
+}
+:root[data-theme="dark"]{--bg:#0f1620;--surface:#16202c;--ink:#e8edf4;--muted:#93a1b3;--line:#263446;--accent:#6b97ff;--accent-ink:#0f1620;--chip:#1c2a40}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+nav{display:flex;gap:22px;flex-wrap:wrap;padding:28px 0;font-size:15px;color:var(--muted)}
+nav a{text-decoration:none}nav a:hover{color:var(--ink)}
+.hero{padding:56px 0 40px}
+.hero h1{font-size:clamp(40px,8vw,68px);line-height:1.02;font-weight:800;letter-spacing:-.03em;margin:0 0 14px}
+.hero .role{font-size:clamp(20px,3.4vw,26px);font-weight:500;color:var(--accent);margin:0 0 18px}
+.hero p.pitch{max-width:56ch;color:var(--muted);margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 20px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);background:var(--surface)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+section{padding:44px 0;border-top:1px solid var(--line)}
+h2{font-size:26px;letter-spacing:-.01em;margin:0 0 22px}
+.about p{max-width:62ch;margin:0}
+.skills{display:grid;gap:18px}
+.skill-row{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:start}
+.skill-row b{font-weight:600;color:var(--muted);font-size:15px;padding-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--chip);padding:4px 12px;border-radius:999px;font-size:14px}
+.projects{display:grid;gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h3{margin:0 0 6px;font-size:20px}
+.card p{margin:0 0 14px;color:var(--muted);font-size:16px}
+.card .chips{margin-bottom:16px}
+.links{display:flex;gap:18px;font-size:15px;font-weight:600}
+.links a{color:var(--accent)}
+.timeline{display:grid;gap:26px}
+.item{display:grid;grid-template-columns:150px 1fr;gap:14px}
+.item .when{color:var(--muted);font-size:15px;padding-top:2px}
+.item h3{margin:0;font-size:18px}
+.item .org{color:var(--muted);margin:0 0 6px;font-size:15px}
+.item ul{margin:6px 0 0;padding-left:18px}
+.item li{margin:3px 0}
+.contact a{display:inline-block;margin:0 22px 8px 0;font-weight:600;color:var(--accent)}
+footer{padding:36px 0 56px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media (max-width:560px){.skill-row,.item{grid-template-columns:1fr;gap:4px}}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:1}
+.bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--accent);z-index:5}
+nav{align-items:center}
+nav a{transition:color .2s}
+nav a.on{color:var(--ink);font-weight:600}
+.tog{margin-left:auto;background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+.tog:hover{border-color:var(--accent)}
+.status{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:14px;margin:0 0 22px}
+.status[hidden]{display:none}
+.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}100%{box-shadow:0 0 0 9px rgba(34,197,94,0)}}
+.w{display:inline-block;white-space:nowrap}
+.ch{display:inline-block;opacity:0;transform:translateY(.55em);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*55ms)}
+@keyframes rise{to{opacity:1;transform:none}}
+.caret{display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:3px;vertical-align:-.12em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+.filters{margin-bottom:18px}
+.filters button{border:0;font:inherit;font-size:14px;color:var(--ink);cursor:pointer;transition:background .2s,color .2s}
+.filters button.on{background:var(--accent);color:var(--accent-ink)}
+.card{position:relative;overflow:hidden;transition:transform .25s ease,border-color .25s ease}
+.card::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(340px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--accent) 16%,transparent),transparent 62%)}
+.card>*{position:relative}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card:hover::before{opacity:1}
+.links a{text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s}
+.links a:hover{border-color:var(--accent)}
+.btn{transition:transform .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.ch{animation:none;opacity:1;transform:none}.dot,.caret{animation:none}.card,.btn{transition:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="bar" aria-hidden="true"></div>
+<div class="wrap">
+  <nav aria-label="Sections">
+    <a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Contact</a>
+    <button class="tog" id="tog" type="button">Dark mode</button>
+  </nav>
+
+  <header class="hero">
+    <p class="status" id="status"><span class="dot"></span><span id="status-text"></span></p>
+    <h1 id="name"></h1>
+    <p class="role">I’m a <span id="role"></span><span class="caret"></span></p>
+    <p class="pitch" id="pitch"></p>
+    <div class="btns">
+      <a class="btn primary" id="resume" href="#" target="_blank" rel="noopener">View resume</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </header>
+
+  <section class="about" id="about"><h2>About</h2><p id="about-text"></p></section>
+  <section id="projects"><h2>Projects</h2><div class="chips filters" id="filters"></div><div class="projects" id="projects-list"></div></section>
+  <section id="skills"><h2>Skills</h2><div class="skills" id="skills-list"></div></section>
+  <section id="experience"><h2>Experience</h2><div class="timeline" id="experience-list"></div></section>
+  <section id="education"><h2>Education</h2><div class="timeline" id="education-list"></div></section>
+  <section class="contact" id="contact"><h2>Contact</h2><div id="contact-list"></div></section>
+  <footer id="footer"></footer>
+</div>
+
+<script>
+/* ============ EDIT YOUR CONTENT HERE ============
+   Replace the placeholder text. To add a project, copy one { ... } block
+   inside PROJECTS and paste it below the last one. */
+const SITE = {
+  name: "Shivam Kalia",
+  role: "Data & AI Engineer",
+  roles: ["Data & AI Engineer", "LLM fine-tuning engineer", "Data scientist"], // the line that types itself in the hero
+  status: "Open to opportunities", // set to "" to hide the green badge
+  pitch: "Data scientist with an MSc in Data Science, AI, and Digital Business. I fine-tune language models, build ML pipelines, and have shipped production Java microservices on Google Cloud.",
+  resumeUrl: "#", // paste a link to your resume PDF (Google Drive, Dropbox, etc.); the button stays hidden until you do
+  about: "I hold an MSc in Data Science, AI, and Digital Business from GISMA University of Applied Sciences. Most recently I fine-tuned a LLaMA-3.1 8B model on 7,500+ anonymized patient records as a Deep Learning Intern at Capital Health Hospital Group in Berlin. Before moving into data science, I spent 18 months as a Java developer at Coforge, building Spring Boot microservices on Google Cloud. I speak English (C2), German (A2) and Hindi."
+};
+
+const PROJECTS = [
+  {
+    title: "Medical LLM fine-tuning (LLaMA-3.1 8B)",
+    description: "Fine-tuned LLaMA-3.1 8B with LoRA on 7,500+ anonymized patient records to draft clinician-grade medical interpretations. Gained +57% ROUGE-1 and +0.23 BERTScore F1 over the base model, trained on a single T4 GPU.",
+    tech: ["LLaMA-3.1", "LoRA / PEFT", "Hugging Face", "NLP"],
+    github: "",
+    live: ""
+  },
+  {
+    title: "Methods of Prediction: comparative modeling",
+    description: "Compared several predictive models on structured datasets to study bias-variance behavior and error distributions, using evaluation pipelines that favor interpretability and generalization over raw accuracy.",
+    tech: ["Machine Learning", "Error Analysis"],
+    github: "",
+    live: ""
+  },
+  {
+    title: "Stock Price Analysis and Prediction",
+    description: "Time-series analysis of historical stock prices: cleaning, feature engineering and exploration to find trends and seasonality, then forecasting models with diagnostics that show how far prediction can go in noisy financial data.",
+    tech: ["Time Series", "Feature Engineering"],
+    github: "",
+    live: ""
+  },
+  {
+    title: "Big Data Analytics",
+    description: "Scalable processing of high-volume datasets covering transformation, aggregation and efficiency, with pipelines built for data quality and reproducible analysis.",
+    tech: ["Big Data", "Data Pipelines"],
+    github: "",
+    live: ""
+  },
+  {
+    title: "Twitch Stream Data Analysis",
+    description: "Exploratory and statistical analysis of Twitch streaming data to understand viewer engagement, content popularity and platform dynamics, presented through clear visualizations.",
+    tech: ["EDA", "Data Visualization"],
+    github: "",
+    live: ""
+  },
+  {
+    title: "Personal Spotify Data Analysis",
+    description: "Exploration and visualization of my own Spotify listening history to find behavioral trends and turn raw data into readable summaries.",
+    tech: ["EDA", "Data Visualization"],
+    github: "",
+    live: ""
+  },
+  {
+    title: "Augmented Reality: published research paper",
+    description: "Published in the Journal of Software Engineering and Software Testing, Volume 3, Issue 3, 2018 (ISSN 2457-0516).",
+    tech: ["Research", "Publication"],
+    github: "",
+    live: ""
+  }
+];
+
+const SKILLS = [
+  { group: "Programming & data", items: ["Python", "Pandas", "NumPy", "SciPy", "SQL", "NoSQL", "Feature engineering"] },
+  { group: "NLP & ML", items: ["NLP", "LLMs", "Hugging Face", "PEFT / LoRA", "Deep learning", "CNNs", "Time series"] },
+  { group: "Model evaluation", items: ["Model validation", "Error analysis", "Bias-variance", "ROUGE", "METEOR", "BERTScore"] },
+  { group: "Visualization", items: ["Tableau", "Power BI", "Matplotlib", "Seaborn", "Data storytelling"] },
+  { group: "Big data", items: ["Large-scale processing", "Reproducible pipelines"] },
+  { group: "Software & cloud", items: ["Java 8", "Spring Boot", "gRPC", "Docker", "Google Cloud"] },
+  { group: "Languages", items: ["English (C2)", "German (A2)", "Hindi"] }
+];
+
+const EXPERIENCE = [
+  {
+    when: "Jan 2024 to Nov 2024",
+    title: "Deep Learning Intern",
+    org: "Capital Health Hospital Group GmbH, Berlin",
+    points: [
+      "Fine-tuned LLaMA-3.1 (8B) with LoRA on 7,500+ anonymized patient records (HL7 to JSON) to generate clinician-grade medical interpretations.",
+      "Built a prompt-engineering and preprocessing pipeline (age normalization, temporal alignment, analyte parsing, multilingual handling), improving ROUGE-1 by 57% and BERTScore F1 by 0.23 over the base model.",
+      "Trained on a single T4 GPU using 4-bit quantization, gradient accumulation, FP16 and AdamW-8bit, cutting loss by about 36%.",
+      "Benchmarked outputs against physician interpretations with ROUGE, METEOR and BERTScore, reaching 85%+ semantic fidelity as a decision-support tool."
+    ]
+  },
+  {
+    when: "Sep 2020 to Mar 2022",
+    title: "Junior Software Developer",
+    org: "Coforge Pvt. Ltd., Delhi",
+    points: [
+      "Helped migrate Sabre\u2019s legacy PNR generation system to cloud-native microservices on Google Cloud Platform.",
+      "Owned the design and implementation of 2 of 7 core Java 8 microservices built with Spring Boot, connected via gRPC and Protocol Buffers.",
+      "Built SQL and Spanner JPA data access layers for PNR data, checking integrity and performance with DBeaver.",
+      "Reached 100% unit test coverage, containerized services with Docker, managed builds with Bazel and worked in Agile (Scrum)."
+    ]
+  }
+];
+
+const EDUCATION = [
+  {
+    when: "Oct 2022 to Nov 2024",
+    title: "MSc Data Science, AI, and Digital Business",
+    org: "GISMA University of Applied Sciences, Potsdam (GPA 1.9)",
+    points: ["Courses: Data Visualization and Communication, Big Data Analytics, AI and Applications, Intro to AI and Machine Learning, Methods of Prediction."]
+  },
+  {
+    when: "Jul 2016 to Jul 2020",
+    title: "B.Tech Computer Science Engineering",
+    org: "Manav Rachna University, Delhi (CGPA 8.02/10)",
+    points: []
+  }
+];
+
+const CONTACT = [
+  { label: "Email", href: "mailto:shivamkalia785@gmail.com" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/shivam-kalia-8764b6194" },
+  { label: "GitHub", href: "https://github.com/ShivamKaliaOm" }
+];
+/* ============ END OF EDITABLE CONTENT ============ */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const isLink = u => u && u !== "#";
+
+document.title = SITE.name + " · " + SITE.role;
+$("name").textContent = SITE.name;
+$("role").textContent = SITE.role;
+$("pitch").textContent = SITE.pitch;
+$("about-text").textContent = SITE.about;
+$("resume").href = SITE.resumeUrl;
+$("resume").style.display = isLink(SITE.resumeUrl) ? "" : "none";
+$("footer").textContent = "© " + new Date().getFullYear() + " " + SITE.name;
+
+$("projects-list").innerHTML = PROJECTS.map(p => `
+  <article class="card">
+    <h3>${esc(p.title)}</h3>
+    <p>${esc(p.description)}</p>
+    <div class="chips">${p.tech.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+    <div class="links">
+      ${isLink(p.github) ? `<a href="${esc(p.github)}" target="_blank" rel="noopener">Code</a>` : ""}
+      ${isLink(p.live) ? `<a href="${esc(p.live)}" target="_blank" rel="noopener">Live demo</a>` : ""}
+    </div>
+  </article>`).join("");
+
+$("skills-list").innerHTML = SKILLS.map(s => `
+  <div class="skill-row"><b>${esc(s.group)}</b>
+  <div class="chips">${s.items.map(i => `<span class="chip">${esc(i)}</span>`).join("")}</div></div>`).join("");
+
+const timeline = list => list.map(e => `
+  <div class="item"><div class="when">${esc(e.when)}</div>
+  <div><h3>${esc(e.title)}</h3><p class="org">${esc(e.org)}</p>
+  ${e.points.length ? `<ul>${e.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}</div></div>`).join("");
+$("experience-list").innerHTML = timeline(EXPERIENCE);
+$("education-list").innerHTML = timeline(EDUCATION);
+
+$("contact-list").innerHTML = CONTACT.map(c =>
+  `<a href="${esc(c.href)}" target="_blank" rel="noopener">${esc(c.label)}</a>`).join("");
+/* ---------- motion and interactivity (no need to edit) ---------- */
+const root=document.documentElement;root.classList.add('js');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const q=s=>esc(s).replace(/'/g,'&#39;');
+$('status-text').textContent=SITE.status||'';if(!SITE.status)$('status').hidden=true;
+
+(()=>{const n=$('name');n.setAttribute('aria-label',SITE.name);let i=0;
+ n.innerHTML=SITE.name.split(' ').map(w=>`<span class='w' aria-hidden='true'>${[...w].map(c=>`<span class='ch' style='--i:${i++}'>${esc(c)}</span>`).join('')}</span>`).join(' ');})();
+
+(()=>{const el=$('role'),L=SITE.roles;if(reduce){el.textContent=L[0];return}
+ let r=0,c=0,del=false;(function tick(){const w=L[r];c+=del?-1:1;el.textContent=w.slice(0,c);let d=del?35:70;
+ if(!del&&c===w.length){del=true;d=1700}else if(del&&c===0){del=false;r=(r+1)%L.length;d=300}setTimeout(tick,d)})();})();
+
+let active='All';
+const techs=['All',...new Set(PROJECTS.flatMap(p=>p.tech))];
+const cardHTML=p=>`<article class='card'><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><div class='chips'>${p.tech.map(t=>`<span class='chip'>${esc(t)}</span>`).join('')}</div><div class='links'>${isLink(p.github)?`<a href='${q(p.github)}' target='_blank' rel='noopener'>Code</a>`:''}${isLink(p.live)?`<a href='${q(p.live)}' target='_blank' rel='noopener'>Live demo</a>`:''}</div></article>`;
+function drawProjects(){
+ $('filters').innerHTML=techs.length>2?techs.map(t=>`<button type='button' class='chip${t===active?' on':''}' data-t='${q(t)}'>${esc(t)}</button>`).join(''):'';
+ $('projects-list').innerHTML=PROJECTS.filter(p=>active==='All'||p.tech.includes(active)).map(cardHTML).join('');
+}
+$('filters').addEventListener('click',e=>{const b=e.target.closest('button');if(b){active=b.dataset.t;drawProjects()}});
+$('projects-list').addEventListener('pointermove',e=>{const c=e.target.closest('.card');if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
+drawProjects();
+
+if(!reduce&&'IntersectionObserver' in window){
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+ document.querySelectorAll('section').forEach(s=>{s.classList.add('reveal');io.observe(s)});
+}
+
+const bar=document.querySelector('.bar');
+addEventListener('scroll',()=>{const h=root.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?scrollY/h:0)+')'},{passive:true});
+const links=[...document.querySelectorAll('nav a')];
+if('IntersectionObserver' in window){const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+ document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));}
+
+const cv=$('bg'),cx=cv.getContext('2d');let W,H,pts=[],col='#1f5eff';const mouse={x:-999,y:-999};
+function cols(){col=getComputedStyle(root).getPropertyValue('--accent').trim()||col}
+function size(){const d=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);
+ const n=Math.min(80,Math.floor(W*H/17000));pts=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}));if(reduce)frame()}
+function frame(){cx.clearRect(0,0,W,H);cx.fillStyle=col;cx.strokeStyle=col;
+ for(let i=0;i<pts.length;i++){const p=pts[i];
+  if(!reduce){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}
+  cx.globalAlpha=.45;cx.beginPath();cx.arc(p.x,p.y,2,0,6.283);cx.fill();
+  for(let j=i+1;j<pts.length;j++){const o=pts[j],d=Math.hypot(p.x-o.x,p.y-o.y);if(d<130){cx.globalAlpha=(1-d/130)*.22;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(o.x,o.y);cx.stroke()}}
+  const m=Math.hypot(p.x-mouse.x,p.y-mouse.y);if(m<180){cx.globalAlpha=(1-m/180)*.6;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(mouse.x,mouse.y);cx.stroke()}
+ }
+ if(!reduce)requestAnimationFrame(frame)}
+addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+document.addEventListener('pointerleave',()=>{mouse.x=-999;mouse.y=-999});
+addEventListener('resize',size);
+
+const tog=$('tog');
+const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+function paint(){tog.textContent=isDark()?'Light mode':'Dark mode';cols()}
+try{const t=localStorage.getItem('theme');if(t)root.dataset.theme=t}catch(e){}
+tog.addEventListener('click',()=>{root.dataset.theme=isDark()?'light':'dark';try{localStorage.setItem('theme',root.dataset.theme)}catch(e){}paint()});
+paint();size();if(!reduce)frame();
+</script>
+</body>
+</html>
